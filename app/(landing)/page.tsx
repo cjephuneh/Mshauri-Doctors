@@ -104,6 +104,9 @@ export default function Home() {
                   <Button asChild size="lg" className="w-full sm:w-auto">
                     <Link href="/onboarding">Get Started</Link>
                   </Button>
+                  <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href="/phamacyOnboarding">Pharmacy?</Link>
+                  </Button>
                   <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                     <Link href="/login">Log In</Link>
                   </Button>

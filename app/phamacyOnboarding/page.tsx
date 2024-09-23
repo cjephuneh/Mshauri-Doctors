@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -9,32 +10,33 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "@/hooks/use-toast"
-import { Loader2, Upload, CheckCircle } from 'lucide-react'
+import { Loader2, Upload, CheckCircle, PillIcon } from 'lucide-react'
 import Navbar from '@/components/ui/navbar'
 import Footer from '@/components/ui/Footer'
 
-
 const steps = [
-  { id: 'login', title: 'Login' },
   { id: 'personal-info', title: 'Personal Information' },
+  { id: 'pharmacy-info', title: 'Pharmacy Information' },
   { id: 'documents', title: 'Document Upload' },
   { id: 'verification', title: 'Verification' },
 ]
 
-export default function OnboardingPage() {
+export default function PharmacistOnboardingPage() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
     firstName: '',
     lastName: '',
-    specialization: '',
-    license: null,
-    certification: null,
+    email: '',
+    phoneNumber: '',
+    pharmacyName: '',
+    pharmacyAddress: '',
+    pharmacyLicense: null,
+    pharmacistLicense: null,
     agreeTos: false,
   })
+  const router = useRouter()
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target
     setFormData(prev => ({
       ...prev,
@@ -42,16 +44,15 @@ export default function OnboardingPage() {
     }))
   }
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
-    const file = e.target.files?.[0]
-    if (!file) return
+  const handleFileUpload = (e, fieldName) => {
+    const file = e.target.files[0]
     setFormData(prev => ({
       ...prev,
       [fieldName]: file
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
@@ -62,6 +63,8 @@ export default function OnboardingPage() {
         title: "Onboarding Complete",
         description: "Your information has been submitted for verification.",
       })
+      // Redirect to dashboard after a delay
+      setTimeout(() => router.push('/pharmacy/dashboard'), 2000)
     }
   }
 
@@ -71,29 +74,50 @@ export default function OnboardingPage() {
         return (
           <Card>
             <CardHeader>
-              <CardTitle>Login to Your Account</CardTitle>
-              <CardDescription>Enter your email and password to continue</CardDescription>
+              <CardTitle>Personal Information</CardTitle>
+              <CardDescription>Please provide your personal details</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName">First Name</Label>
+                  <Input
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName">Last Name</Label>
+                  <Input
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="doctor@example.com"
                   value={formData.email}
                   onChange={handleInputChange}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="phoneNumber">Phone Number</Label>
                 <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={formData.password}
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  type="tel"
+                  value={formData.phoneNumber}
                   onChange={handleInputChange}
                   required
                 />
@@ -108,54 +132,29 @@ export default function OnboardingPage() {
         return (
           <Card>
             <CardHeader>
-              <CardTitle>Personal Information</CardTitle>
-              <CardDescription>Please provide your personal details</CardDescription>
+              <CardTitle>Pharmacy Information</CardTitle>
+              <CardDescription>Tell us about your pharmacy</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="firstName">First Name</Label>
+                <Label htmlFor="pharmacyName">Pharmacy Name</Label>
                 <Input
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
+                  id="pharmacyName"
+                  name="pharmacyName"
+                  value={formData.pharmacyName}
                   onChange={handleInputChange}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastName">Last Name</Label>
+                <Label htmlFor="pharmacyAddress">Pharmacy Address</Label>
                 <Input
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
+                  id="pharmacyAddress"
+                  name="pharmacyAddress"
+                  value={formData.pharmacyAddress}
                   onChange={handleInputChange}
                   required
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="specialization">Specialization</Label>
-                <Select name="specialization" onValueChange={(value) => handleInputChange({ target: { name: 'specialization', value } } as React.ChangeEvent<HTMLSelectElement>)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select your specialization" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="cardiology">Cardiology</SelectItem>
-                    <SelectItem value="dermatology">Dermatology</SelectItem>
-                    <SelectItem value="neurology">Neurology</SelectItem>
-                    <SelectItem value="pediatrics">Pediatrics</SelectItem>
-                    <SelectItem value="psychiatry">Psychiatry</SelectItem>
-                    <SelectItem value="oncology">Oncology</SelectItem>
-                    <SelectItem value="orthopedics">Orthopedics</SelectItem>
-                    <SelectItem value="urology">Urology</SelectItem>
-                    <SelectItem value="gastroenterology">Gastroenterology</SelectItem>
-                    <SelectItem value="endocrinology">Endocrinology</SelectItem>
-                    <SelectItem value="hematology">Hematology</SelectItem>
-                    <SelectItem value="immunology">Immunology</SelectItem>
-                    <SelectItem value="infectious diseases">Infectious Diseases</SelectItem>
-                    <SelectItem value="nephrology">Nephrology</SelectItem>
-                    
-                  </SelectContent>
-                </Select>
               </div>
             </CardContent>
             <CardFooter>
@@ -168,43 +167,43 @@ export default function OnboardingPage() {
           <Card>
             <CardHeader>
               <CardTitle>Document Upload</CardTitle>
-              <CardDescription>Please upload your medical license and board certification</CardDescription>
+              <CardDescription>Please upload your pharmacy and pharmacist licenses</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="license">Medical License</Label>
+                <Label htmlFor="pharmacyLicense">Pharmacy License</Label>
                 <div className="flex items-center space-x-2">
                   <Input
-                    id="license"
+                    id="pharmacyLicense"
                     type="file"
-                    onChange={(e) => handleFileUpload(e, 'license')}
+                    onChange={(e) => handleFileUpload(e, 'pharmacyLicense')}
                     className="hidden"
                   />
                   <Button asChild variant="outline">
-                    <label htmlFor="license" className="cursor-pointer">
+                    <label htmlFor="pharmacyLicense" className="cursor-pointer">
                       <Upload className="mr-2 h-4 w-4" />
-                      Upload License
+                      Upload Pharmacy License
                     </label>
                   </Button>
-                  {formData.license && <span className="text-sm text-muted-foreground">{formData.license.name}</span>}
+                  {formData.pharmacyLicense && <span className="text-sm text-muted-foreground">{formData.pharmacyLicense.name}</span>}
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="certification">Board Certification</Label>
+                <Label htmlFor="pharmacistLicense">Pharmacist License</Label>
                 <div className="flex items-center space-x-2">
                   <Input
-                    id="certification"
+                    id="pharmacistLicense"
                     type="file"
-                    onChange={(e) => handleFileUpload(e, 'certification')}
+                    onChange={(e) => handleFileUpload(e, 'pharmacistLicense')}
                     className="hidden"
                   />
                   <Button asChild variant="outline">
-                    <label htmlFor="certification" className="cursor-pointer">
+                    <label htmlFor="pharmacistLicense" className="cursor-pointer">
                       <Upload className="mr-2 h-4 w-4" />
-                      Upload Certification
+                      Upload Pharmacist License
                     </label>
                   </Button>
-                  {formData.certification && <span className="text-sm text-muted-foreground">{(formData.certification as { name: string }).name}</span>}
+                  {formData.pharmacistLicense && <span className="text-sm text-muted-foreground">{formData.pharmacistLicense.name}</span>}
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -212,7 +211,7 @@ export default function OnboardingPage() {
                   id="agreeTos"
                   name="agreeTos"
                   checked={formData.agreeTos}
-                  onCheckedChange={(checked: boolean) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
+                  onCheckedChange={(checked) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
                 />
                 <label
                   htmlFor="agreeTos"
@@ -223,7 +222,7 @@ export default function OnboardingPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button type="submit" className="w-full" disabled={!formData.license || !formData.certification || !formData.agreeTos}>
+              <Button type="submit" className="w-full" disabled={!formData.pharmacyLicense || !formData.pharmacistLicense || !formData.agreeTos}>
                 Submit for Verification
               </Button>
             </CardFooter>
@@ -245,7 +244,7 @@ export default function OnboardingPage() {
               </p>
             </CardContent>
             <CardFooter className="flex justify-center">
-              <Button variant="outline" onClick={() => window.location.href = '/'}>Return to Home</Button>
+              <Button variant="outline" onClick={() => router.push('/PhamarcyDashboard')}>Go to Dashboard</Button>
             </CardFooter>
           </Card>
         )
@@ -255,11 +254,11 @@ export default function OnboardingPage() {
   return (
     <>
     <Navbar />
-    <div className="min-h-screen bg-gradient-to-b bg-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-8">
-
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-8 mt-14">
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-bold tracking-tight text-black">Doctor Onboarding</h2>
+          <PillIcon className="mx-auto h-12 w-12 text-primary" />
+          <h2 className="mt-6 text-3xl font-bold tracking-tight text-black">Pharmacist Onboarding</h2>
           <p className="mt-2 text-sm text-muted-foreground">Complete the following steps to set up your account</p>
         </div>
         <nav aria-label="Progress">
@@ -292,18 +291,16 @@ export default function OnboardingPage() {
             ))}
           </ol>
         </nav>
-        <AnimatePresence mode="wait">
-          <motion.form
-            key={currentStep}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
-            onSubmit={handleSubmit}
-          >
-            {renderStep()}
-          </motion.form>
-        </AnimatePresence>
+        <motion.form
+          key={currentStep}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          transition={{ duration: 0.3 }}
+          onSubmit={handleSubmit}
+        >
+          {renderStep()}
+        </motion.form>
       </div>
     </div>
     <Footer />
