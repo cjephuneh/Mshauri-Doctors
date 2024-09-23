@@ -70,7 +70,7 @@ export default function PharmacistDashboardPage() {
       </div>
       <div className="flex flex-col">
         <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-white">
-          <Button className="lg:hidden" size="icon" variant="outline" onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <Button className="lg:hidden p-2" size="icon" variant="outline" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <Menu className="h-6 w-6" />
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
