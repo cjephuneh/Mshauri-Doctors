@@ -299,23 +299,23 @@ export default function DashboardPage() {
           </div>
 
           {/* Patients Table */}
-          <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+          <div className="bg-white  shadow rounded-lg overflow-hidden">
             <Table>
-              <TableHeader className="bg-gray-100 dark:bg-gray-700">
+              <TableHeader className="bg-gray-100 ">
                 <TableRow>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-black  uppercase tracking-wider">
                     Patient ID
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-black  uppercase tracking-wider">
                     Name
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-black  uppercase tracking-wider">
                     Age
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-black  uppercase tracking-wider">
                     Condition
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-right text-xs font-medium text-gray-500  uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-right text-xs font-medium text-black  uppercase tracking-wider">
                     Action
                   </TableHead>
                 </TableRow>
@@ -347,12 +347,13 @@ export default function DashboardPage() {
           <Modal isOpen={isAssistModalOpen} onClose={closeAssistModal}>
             {selectedPatient && (
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800  mb-4">Patient Information</h2>
+                <h2 className="text-xl font-semibold text-black  mb-4">Patient Information</h2>
                 <div className="space-y-2">
-                  <p><span className="font-medium text-gray-700 ">Patient ID:</span> {selectedPatient.id}</p>
-                  <p><span className="font-medium text-gray-700 ">Name:</span> {selectedPatient.name}</p>
-                  <p><span className="font-medium text-gray-700 ">Age:</span> {selectedPatient.age}</p>
-                  <p><span className="font-medium text-gray-700 ">Condition:</span> {selectedPatient.condition}</p>
+                  <p><span className="font-medium text-black ">Patient ID:</span> {selectedPatient.id}</p>
+                  <p><span className="font-medium text-black ">Name:</span> {selectedPatient.name}</p>
+                  <p><span className="font-medium text-black ">Age:</span> {selectedPatient.age}</p>
+                  <p><span className="font-medium text-black ">Condition:</span> {selectedPatient.condition}</p>
+                  
                   {/* Add more patient details as needed */}
                 </div>
                 <div className="mt-6 flex space-x-4 ">
