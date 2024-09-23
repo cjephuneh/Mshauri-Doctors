@@ -34,7 +34,7 @@ export default function OnboardingPage() {
     agreeTos: false,
   })
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target
     setFormData(prev => ({
       ...prev,
@@ -51,7 +51,7 @@ export default function OnboardingPage() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
@@ -134,7 +134,7 @@ export default function OnboardingPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="specialization">Specialization</Label>
-                <Select name="specialization" onValueChange={(value) => handleInputChange({ target: { name: 'specialization', value } })}>
+                <Select name="specialization" onValueChange={(value) => handleInputChange({ target: { name: 'specialization', value } } as any)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select your specialization" />
                   </SelectTrigger>
@@ -144,6 +144,16 @@ export default function OnboardingPage() {
                     <SelectItem value="neurology">Neurology</SelectItem>
                     <SelectItem value="pediatrics">Pediatrics</SelectItem>
                     <SelectItem value="psychiatry">Psychiatry</SelectItem>
+                    <SelectItem value="oncology">Oncology</SelectItem>
+                    <SelectItem value="orthopedics">Orthopedics</SelectItem>
+                    <SelectItem value="urology">Urology</SelectItem>
+                    <SelectItem value="gastroenterology">Gastroenterology</SelectItem>
+                    <SelectItem value="endocrinology">Endocrinology</SelectItem>
+                    <SelectItem value="hematology">Hematology</SelectItem>
+                    <SelectItem value="immunology">Immunology</SelectItem>
+                    <SelectItem value="infectious diseases">Infectious Diseases</SelectItem>
+                    <SelectItem value="nephrology">Nephrology</SelectItem>
+                    
                   </SelectContent>
                 </Select>
               </div>
@@ -176,7 +186,9 @@ export default function OnboardingPage() {
                       Upload License
                     </label>
                   </Button>
-                  {formData.license && <span className="text-sm text-muted-foreground">{formData.license.name}</span>}
+                  {formData.license && 'name' in formData.license && (
+                    <span className="text-sm text-muted-foreground">{(formData.license as { name: string }).name}</span>
+                  )}
                 </div>
               </div>
               <div className="space-y-2">
@@ -194,7 +206,7 @@ export default function OnboardingPage() {
                       Upload Certification
                     </label>
                   </Button>
-                  {formData.certification && <span className="text-sm text-muted-foreground">{formData.certification.name}</span>}
+                  {formData.certification && <span className="text-sm text-muted-foreground">{(formData.certification as { name: string }).name}</span>}
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -202,7 +214,7 @@ export default function OnboardingPage() {
                   id="agreeTos"
                   name="agreeTos"
                   checked={formData.agreeTos}
-                  onCheckedChange={(checked) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
+                //   onCheckedChange={(checked: boolean) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
                 />
                 <label
                   htmlFor="agreeTos"

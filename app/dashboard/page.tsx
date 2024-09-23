@@ -11,6 +11,7 @@ import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Card } from '@/components/ui/card';
 import Modal from '@/components/ui/modal' // Assume you have a Modal component
 import { Dialog, Transition } from '@headlessui/react' // For the chat modal
+import Profile from '@/assets/Brick labs AI-56.jpg'
 
 interface Patient {
   id: string;
@@ -119,7 +120,7 @@ export default function DashboardPage() {
             {/* Option 1: Profile Picture */}
             <div className="flex items-center space-x-3">
               <img
-                src="/assets/Brick labs AI-56.jpg" // Replace with actual profile image path
+                src={Profile.src}
                 alt="Profile"
                 className="h-10 w-10 rounded-full object-cover"
               />
@@ -178,7 +179,7 @@ export default function DashboardPage() {
                   alt="Avatar"
                   className="rounded-full object-cover"
                   height="40"
-                  src="/placeholder.svg"
+                  src="/prof.jpg"
                   width="40"
                 />
                 <span className="sr-only">Toggle user menu</span>
@@ -369,10 +370,8 @@ export default function DashboardPage() {
                   <Button
                     className="flex items-center gap-2 bg-purple-500 text-white hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700"
                     onClick={() => {
-                      // Implement Meet Now functionality
                       closeAssistModal()
-                      // Redirect to meeting page or open a video call modal
-                      alert('Meet Now functionality to be implemented.')
+                      window.open('https://meet.google.com/ztt-qmwc-tes', '_blank')
                     }}
                   >
                     <VideoIcon className="h-4 w-4" />
@@ -462,3 +461,5 @@ export default function DashboardPage() {
     </div>
   )
 }
+
+
