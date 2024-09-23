@@ -134,7 +134,7 @@ export default function OnboardingPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="specialization">Specialization</Label>
-                <Select name="specialization" onValueChange={(value) => handleInputChange({ target: { name: 'specialization', value } } as any)}>
+                <Select name="specialization" onValueChange={(value) => handleInputChange({ target: { name: 'specialization', value } } as React.ChangeEvent<HTMLSelectElement>)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select your specialization" />
                   </SelectTrigger>
@@ -186,9 +186,7 @@ export default function OnboardingPage() {
                       Upload License
                     </label>
                   </Button>
-                  {formData.license && 'name' in formData.license && (
-                    <span className="text-sm text-muted-foreground">{(formData.license as { name: string }).name}</span>
-                  )}
+                  {formData.license && <span className="text-sm text-muted-foreground">{formData.license.name}</span>}
                 </div>
               </div>
               <div className="space-y-2">
@@ -214,7 +212,7 @@ export default function OnboardingPage() {
                   id="agreeTos"
                   name="agreeTos"
                   checked={formData.agreeTos}
-                //   onCheckedChange={(checked: boolean) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
+                  onCheckedChange={(checked: boolean) => handleInputChange({ target: { name: 'agreeTos', type: 'checkbox', checked } })}
                 />
                 <label
                   htmlFor="agreeTos"

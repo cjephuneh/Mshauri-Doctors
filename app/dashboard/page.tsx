@@ -125,7 +125,7 @@ export default function DashboardPage() {
                 className="h-10 w-10 rounded-full object-cover"
               />
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Dr. Smith</p>
+                <p className="text-sm font-medium text-gray-700 ">Dr. Smith</p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Cardiologist</p>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function DashboardPage() {
         <header className="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
           {/* Mobile Menu Button */}
           <Button className="lg:hidden" size="icon" variant="outline" onClick={() => setSidebarOpen(!sidebarOpen)}>
-            <MenuIcon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+            <MenuIcon className="h-6 w-6 text-gray-700 " />
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
 
@@ -159,7 +159,7 @@ export default function DashboardPage() {
               <div className="relative">
                 <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
                 <Input
-                  className="pl-10 pr-4 py-2 w-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 border border-transparent focus:border-blue-500 dark:focus:border-blue-400 focus:ring-0"
+                  className="pl-10 pr-4 py-2 w-full bg-gray-100 dark:bg-gray-700 text-gray-800  placeholder-gray-500 dark:placeholder-gray-400 border border-transparent focus:border-blue-500 dark:focus:border-blue-400 focus:ring-0"
                   placeholder="Search patients..."
                   type="search"
                 />
@@ -203,7 +203,7 @@ export default function DashboardPage() {
         <main className="flex-1 p-6 bg-gray-50 dark:bg-gray-900">
           {/* Dashboard Overview */}
           <div className="mb-8">
-            <h1 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">Dashboard Overview</h1>
+            <h1 className="text-2xl font-semibold text-gray-800 ">Dashboard Overview</h1>
           </div>
 
           {/* Statistics Cards */}
@@ -215,7 +215,7 @@ export default function DashboardPage() {
                 <UsersIcon className="h-6 w-6 text-blue-500 dark:text-blue-400" />
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">1,234</div>
+                <div className="text-3xl font-bold text-gray-800 ">1,234</div>
                 <p className="mt-1 text-sm text-green-500">+20% from last month</p>
               </CardContent>
             </Card>
@@ -227,7 +227,7 @@ export default function DashboardPage() {
                 <CalendarIcon className="h-6 w-6 text-purple-500 dark:text-purple-400" />
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">12</div>
+                <div className="text-3xl font-bold text-gray-800 ">12</div>
                 <p className="mt-1 text-sm text-red-500">2 more than yesterday</p>
               </CardContent>
             </Card>
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 <FileTextIcon className="h-6 w-6 text-yellow-500 dark:text-yellow-400" />
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">7</div>
+                <div className="text-3xl font-bold text-gray-800 ">7</div>
                 <p className="mt-1 text-sm text-blue-500">5 less than yesterday</p>
               </CardContent>
             </Card>
@@ -251,7 +251,7 @@ export default function DashboardPage() {
                 <CheckCircleIcon className="h-6 w-6 text-green-500 dark:text-green-400" />
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">98%</div>
+                <div className="text-3xl font-bold text-gray-800 ">98%</div>
                 <p className="mt-1 text-sm text-indigo-500">+2% from last week</p>
               </CardContent>
             </Card>
@@ -272,7 +272,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">$45,678</div>
+                <div className="text-3xl font-bold text-gray-800 ">$45,678</div>
                 <p className="mt-1 text-sm text-green-500">+15% from last month</p>
               </CardContent>
             </Card>
@@ -292,7 +292,7 @@ export default function DashboardPage() {
                 </svg>
               </div>
               <CardContent className="mt-4">
-                <div className="text-3xl font-bold text-gray-800 dark:text-gray-100">$12,345</div>
+                <div className="text-3xl font-bold text-gray-800 ">$12,345</div>
                 <p className="mt-1 text-sm text-red-500">-10% from last month</p>
               </CardContent>
             </Card>
@@ -303,19 +303,19 @@ export default function DashboardPage() {
             <Table>
               <TableHeader className="bg-gray-100 dark:bg-gray-700">
                 <TableRow>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Patient ID
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Name
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Age
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Condition
                   </TableHead>
-                  <TableHead className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                  <TableHead className="px-6 py-3 text-right text-xs font-medium text-gray-500  uppercase tracking-wider">
                     Action
                   </TableHead>
                 </TableRow>
@@ -323,10 +323,10 @@ export default function DashboardPage() {
               <TableBody>
                 {patients.map((patient) => (
                   <TableRow key={patient.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">{patient.id}</TableCell>
-                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{patient.name}</TableCell>
-                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{patient.age}</TableCell>
-                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{patient.condition}</TableCell>
+                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 ">{patient.id}</TableCell>
+                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 ">{patient.name}</TableCell>
+                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 ">{patient.age}</TableCell>
+                    <TableCell className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 ">{patient.condition}</TableCell>
                     <TableCell className="px-6 py-4 whitespace-nowrap text-right">
                       <Button
                         size="sm"
@@ -347,15 +347,15 @@ export default function DashboardPage() {
           <Modal isOpen={isAssistModalOpen} onClose={closeAssistModal}>
             {selectedPatient && (
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Patient Information</h2>
+                <h2 className="text-xl font-semibold text-gray-800  mb-4">Patient Information</h2>
                 <div className="space-y-2">
-                  <p><span className="font-medium text-gray-700 dark:text-gray-300">Patient ID:</span> {selectedPatient.id}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-300">Name:</span> {selectedPatient.name}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-300">Age:</span> {selectedPatient.age}</p>
-                  <p><span className="font-medium text-gray-700 dark:text-gray-300">Condition:</span> {selectedPatient.condition}</p>
+                  <p><span className="font-medium text-gray-700 ">Patient ID:</span> {selectedPatient.id}</p>
+                  <p><span className="font-medium text-gray-700 ">Name:</span> {selectedPatient.name}</p>
+                  <p><span className="font-medium text-gray-700 ">Age:</span> {selectedPatient.age}</p>
+                  <p><span className="font-medium text-gray-700 ">Condition:</span> {selectedPatient.condition}</p>
                   {/* Add more patient details as needed */}
                 </div>
-                <div className="mt-6 flex space-x-4">
+                <div className="mt-6 flex space-x-4 ">
                   <Button
                     className="flex items-center gap-2 bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                     onClick={() => {
@@ -366,6 +366,16 @@ export default function DashboardPage() {
                   >
                     <MessageCircleCodeIcon className="h-4 w-4" />
                     Start Chat
+                  </Button>
+                  <Button
+                    className="flex items-center gap-2 bg-green-500 text-white hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
+                    onClick={() => {
+                        closeAssistModal()
+                        window.open('https://wa.me/+254701888380', '_blank')
+                      }}
+                  >
+                    <MessageCircleCodeIcon className="h-4 w-4" />
+                    Whatsapp
                   </Button>
                   <Button
                     className="flex items-center gap-2 bg-purple-500 text-white hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700"
@@ -418,7 +428,7 @@ export default function DashboardPage() {
                     leaveTo="opacity-0 scale-95"
                   >
                     <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-6 text-left align-middle shadow-xl transition-all">
-                      <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+                      <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900 ">
                         AI Assistant
                       </Dialog.Title>
                       <div className="mt-2">
@@ -431,13 +441,13 @@ export default function DashboardPage() {
                         {/* Chat Interface Placeholder */}
                         <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg h-48 overflow-y-auto mb-4">
                           {/* Messages will appear here */}
-                          <p className="text-gray-700 dark:text-gray-300">Hello! How can I assist you today?</p>
+                          <p className="text-gray-700 ">Hello! How can I assist you today?</p>
                         </div>
                         {/* Input Field */}
                         <div className="flex">
                           <Input
                             placeholder="Type your message..."
-                            className="flex-1 mr-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                            className="flex-1 mr-2 bg-gray-100 dark:bg-gray-700 text-gray-800  placeholder-gray-500 dark:placeholder-gray-400"
                           />
                           <Button className="bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">
                             Send
@@ -455,7 +465,7 @@ export default function DashboardPage() {
 
         {/* Footer */}
         <footer className="h-16 flex items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-          <p className="text-sm text-gray-600 dark:text-gray-300">© 2024 TeleMed. All rights reserved.</p>
+          <p className="text-sm text-gray-600 ">© 2024 TeleMed. All rights reserved.</p>
         </footer>
       </div>
     </div>

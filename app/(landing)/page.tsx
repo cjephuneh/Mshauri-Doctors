@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { CalendarIcon, FileTextIcon, HeartPulseIcon, UserIcon, VideoIcon, CheckCircleIcon } from 'lucide-react'
 import placeholderImage from '@/assets/Brick labs AI-56.jpg'
+import Image1 from '@/assets/Designer.png'
+import Image2 from '@/assets/Designer (5).jpeg'
 
 const FeatureCard = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => {
   return (
@@ -38,7 +40,7 @@ const TestimonialCard = ({ name, role, testimonial, image }: TestimonialCardProp
     <Card className="h-full bg-white shadow-md rounded-lg p-6">
       <CardHeader className="flex items-center space-x-4">
         <Image
-          src={image}
+          src={placeholderImage}
           alt={name}
           width={50}
           height={50}
@@ -95,7 +97,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-800">
-                  Revolutionizing Healthcare with TeleMed
+                  Revolutionizing Healthcare with TeleMed and AI
                 </h1>
                 <p className="mt-6 text-lg sm:text-xl text-gray-600">
                   Connect with patients, manage appointments, and provide care from anywhere. Experience the future of telemedicine.
@@ -110,18 +112,21 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* 3D Model */}
-              <div className="w-full h-96 lg:h-[500px]">
-                <Canvas>
-                  <OrbitControls enableZoom={false} />
-                  <ambientLight intensity={0.6} />
-                  <spotLight position={[10, 15, 10]} angle={0.3} intensity={1} castShadow />
-                  <mesh rotation={[0, 0, 0]}>
-                    <boxGeometry args={[2, 2, 2]} />
-                    <meshStandardMaterial color="#FF5733" />
-                  </mesh>
-                  <Environment preset="sunset" />
-                </Canvas>
+              {/* Image on the right */}
+              <div className="relative w-full h-96 lg:h-[500px]">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Image
+                  src={Image1}
+                  alt="3D Model"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg h-20 w-20" // Adjusted size
+                />
+              </motion.div>
               </div>
             </div>
           </div>
@@ -251,24 +256,21 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Decorative 3D Text */}
-              <div className="w-full h-96 lg:h-[500px]">
-                <Canvas>
-                  <OrbitControls enableZoom={false} />
-                  <ambientLight intensity={0.6} />
-                  <spotLight position={[10, 15, 10]} angle={0.3} intensity={1} castShadow />
-                  <DreiText
-                    position={[0, 0, 0]}
-                    fontSize={2}
-                    color="#FF5733"
-                    anchorX="center"
-                    anchorY="middle"
-                    rotation={[0, Math.PI / 4, 0]}
-                  >
-                    TeleMed
-                  </DreiText>
-                  <Environment preset="sunset" />
-                </Canvas>
+              {/* Image on the right */}
+              <div className="relative w-full h-96 lg:h-[500px]">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Image
+                  src={Image2}
+                  alt="3D Model"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg h-20 w-20" // Adjusted size
+                />
+              </motion.div>
               </div>
             </div>
           </div>
