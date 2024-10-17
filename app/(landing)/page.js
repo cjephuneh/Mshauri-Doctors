@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { Search, ShoppingCart, User, ChevronRight, Star } from 'lucide-react';
+import HomeImg from '@/assets/image.png';
+import Navbar from '@/components/landing/navbar';
 
 const SpecialityCard = ({ icon, title }) => (
   <div className="flex flex-col items-center p-4 bg-gray-50 rounded-xl">
-    <Image src="/api/placeholder/60/60" alt={title} width={60} height={60} className="mb-2" />
+    <Image src={HomeImg} alt={title} width={60} height={60} className="mb-2" />
     <span className="text-sm text-gray-900 font-medium">{title}</span>
   </div>
 );
@@ -23,127 +25,48 @@ const CommonHealthCard = ({ doctorCount, title, className }) => (
   </div>
 );
 
-const Header = () => (
-  <header className="w-full border-b">
-    <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div className="flex items-center gap-8">
-        <div className="flex items-center">
-          <span className="text-indigo-700 font-bold text-2xl">Medicare</span>
-        </div>
-        
-        <div className="flex items-center gap-2">
-          <div className="flex items-center text-sm text-gray-600">
-            <span className="mr-2">Select Location</span>
-            <span className="font-medium">New York</span>
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-          
-          <div className="flex items-center ml-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Medicine and healthcare items"
-                className="w-[300px] pl-8 pr-4 py-1.5 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500"
-              />
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-gray-400" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-6">
-        <button className="text-gray-600 hover:text-gray-800">Healthcare Services</button>
-        <button className="text-gray-600 hover:text-gray-800 flex items-center gap-1">
-          <span className="bg-orange-100 text-orange-600 text-xs px-1.5 py-0.5 rounded">New</span>
-          Offers
-        </button>
-        <button className="text-gray-600 hover:text-gray-800">
-          <ShoppingCart className="w-5 h-5" />
-        </button>
-        <button className="text-gray-600 hover:text-gray-800">
-          <User className="w-5 h-5" />
-        </button>
-      </div>
-    </div>
-  </header>
-);
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-gray-800"> {/* Darker background */}
+      <Navbar />
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-2 gap-6 bg-[#1a1b3f] rounded-2xl overflow-hidden">
-          <div className="p-12 text-white">
-            <h1 className="text-5xl font-bold leading-tight">
-              Save <span className="text-emerald-400">time and money</span> on travel expenses
-            </h1>
-            <p className="mt-4 text-gray-300">
-              Experience hassle-free healthcare with online doctor consultations
-            </p>
-            
-            <button className="mt-8 px-6 py-3 bg-yellow-400 text-gray-900 rounded-full font-medium flex items-center gap-2 hover:bg-yellow-300 transition-colors">
-              Consult Now
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            
-            <div className="mt-12 flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-sm text-gray-300">Verified Doctors</span>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <span className="text-sm text-gray-300">Digital Prescription</span>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="text-sm text-gray-300">Free Followup</span>
-              </div>
+        <div className="bg-[#111326] rounded-2xl overflow-hidden relative"> {/* Darker hero background */}
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 lg:py-32 flex flex-row items-center gap-12 md:gap-20 lg:gap-24 text-white">
+            {/* Content Area */}
+            <div className="w-1/2"> {/* Adjust width as needed */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Save <span className="text-emerald-400">time and money</span><br /> on travel expenses
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-gray-300">
+                Experience hassle-free healthcare with online doctor consultations.
+              </p>
+
+              <button className="mt-8 px-8 py-3 bg-yellow-400 text-gray-900 rounded-full font-medium flex items-center gap-2 hover:bg-yellow-300 transition-colors">
+                Consult Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
-          </div>
-          
-          <div className="relative">
-            <Image
-              src="/api/placeholder/600/400"
-              alt="Online consultation"
-              width={600}
-              height={400}
-              className="object-cover h-full"
-            />
+
+            {/* Image Area */}
+            <div className="w-1/2 relative"> {/* Adjust width as needed */}
+              <Image
+                src={HomeImg}
+                alt="Online consultation"
+                width={600}
+                height={400}
+                className="rounded-xl"
+              />
+            </div>
           </div>
         </div>
         
-        <div className="mt-12">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">25+ Specialities</h2>
-            <button className="text-indigo-600 font-medium hover:text-indigo-700">
-              SEE ALL SPECIALITIES →
-            </button>
-          </div>
-        </div>
+
 
         {/* Specialities Section */}
-        <section className="bg-white rounded-2xl p-6">
+        <section className="bg-gray-400 rounded-2xl p-6 mt-4">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">25+ Symptom Specialities</h2>
             <button className="text-indigo-600 font-medium flex items-center">
